@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Wild Waves Aquatic Park</title>
+</head>
+<body>
+    <h1>Wild Waves Aquatic Park</h1>
+    <button type="button" onclick="buyTicket()">Purchase Attraction</button>
+
+    <script>
+        const WAVE_POOL_MIN_HEIGHT = 42; // INCHES
+        const WATERSLIDE_MIN_HEIGHT = 48; //INCHES
+        const LAZY_RIVER_MIN_HEIGHT = 36; //INCHES
+        const MIN_HEIGHT_ALL_RIDES = 43; // INCHES
+        
+        function buyTicket() {
+                const attractionType = prompt('Which attraction do you want to visit: type "wave" for wave pool, "water" for waterslide, or "river" for lazy river?');
+                const userHeight = prompt('Please enter your height in Inches');
+                console.log("User's selected attraction is: " + attractionType);
+                console.log("User's height is :" + userHeight);
+
+                const isAllowed = checkHeight(attractionType,userHeight);
+
+                if (isAllowed){
+                    alert('You are allowed to ride this attraction! Enjoy the ride!');
+                } else {
+                    alert('Sorry. Access denied! It is not safe for you to ride this attraction.');
+                }
+        }
+
+        function checkHeight(attraction, height) {
+            switch(attraction){
+                default :
+                    const withAdult = prompt('Are you accompanied by an Adult? y/n');
+                    if ((height >= MIN_HEIGHT_ALL_RIDE) && (withAdult === 'y')){
+                        return true;
+                    } else{
+                        return false;
+                    }
+                break;
+
+                case 'wave' :
+                    if (height >= WAVE_POOL_MIN_HEIGHT){
+                        return true;
+                    } else{
+                        return false;
+                    }
+                break;
+                case 'water' :
+                    if (height >= WATERSLIDE_MIN_HEIGHT){
+                        return true;
+                    } else{
+                        return false;
+                    }
+                break;
+                case 'river' :
+                    if (height >= LAZY_RIVER_MIN_HEIGHT){
+                        return true;
+                    } else{
+                        return false;
+                    }
+                break;
+
+            }
+        }
+
+    </script>
+</body>
+</html>
